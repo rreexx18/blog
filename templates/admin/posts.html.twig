@@ -1,0 +1,68 @@
+{% extends 'admin/index.html.twig' %}
+{% block admintitle %} <h2>Posts</h2> <a href="#" class="btn-add-new">Add new post</a> {% endblock %}
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th class="col-int">Id</th>
+                <th>Title</th>
+                <th>Created at</th>
+                <th>Published at</th>
+                <th>Last modification</th>
+                <th>Status</th>
+                <th>Author</th>
+                <th class="col-int">User Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts  %}
+                <tr>
+                    <td class="col-int">{{ post.id }}</td>
+                    <td>
+                        {{ post.title }}
+                        <br>
+                        <span class="actions" style="display: none;">
+                            <a href="#" class="edit">Edit</a>
+                            <a href="#" class="delete">Delete</a>
+                        </span>
+                    </td>
+                    
+                    {% if post.createdAt is null %}
+                        <td></td>
+                    {% else %}
+                        <td>{{ post.createdAt|date("H:m:s m/d/Y") }}</td>
+                    {% endif %}
+                    
+                    {% if post.publishedAt is null %}
+                        <td></td>
+                    {% else %}
+                        <td>{{ post.publishedAt|date("H:m:s m/d/Y") }}</td>
+                    {% endif %}
+                    
+                    {% if post.modifyedAt is null %}
+                        <td></td>
+                    {% else %}
+                        <td>{{ post.modifyedAt|date("H:m:s m/d/Y") }}</td>
+                    {% endif %}
+                    
+                    <td>{{ post.status }}</td>
+                    {% set author = post.author|split("@") %}
+                    <td>{{ author[0] }}</td>
+                    <td class="col-int">{{ post.user.Id }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th class="col-int">Id</th>
+                <th>Title</th>
+                <th>Created at</th>
+                <th>Published at</th>
+                <th>Last modification</th>
+                <th>Status</th>
+                <th>Author</th>
+                <th class="col-int">User Id</th>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

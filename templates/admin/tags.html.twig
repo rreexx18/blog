@@ -1,0 +1,26 @@
+{% extends 'admin/index.html.twig' %}
+{% block admintitle %} <h2>Tags</h2> {% endblock %}
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tag in tags  %}
+                <tr>
+                    <td>{{ tag.id }}</td>
+                    <td>{{ tag.tag }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

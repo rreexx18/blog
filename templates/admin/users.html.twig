@@ -1,0 +1,49 @@
+{% extends 'admin/index.html.twig' %}
+{% block admintitle %} <h2>Users</h2> <a href="{{ path('app_admin_new_user') }}" class="btn-add-new">Add new user</a> {% endblock %}
+{% block body %}
+    
+    <table>
+        <thead>
+            <tr>
+                <th class="col-int">Id</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Roles</th>
+                <th class="col-int">Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td class="col-int">{{ user.id }}</td>
+                    <td>{{ user.email }}
+                        <br>
+                        <span class="actions" style="display: none;">
+                            <a href="{{ path('app_admin_update_user', {'id':user.id}) }}" class="edit">Edit</a>
+                            <a href="{{ path('app_admin_active_user', {'id':user.id}) }}" class="active">{% if user.isActive == 1 %}Unactive {% else %}Active{% endif %}</a>
+                            <a href="{{ path('app_admin_delete_user', {'id':user.id}) }}" class="delete">Delete</a>
+                        </span>
+                    </td>
+                    {% set username = user.username|split("@") %}
+                    <td>{{ username[0] }}</td>
+                    <td>
+                        {% for role in user.roles %}
+                            {{ role }};
+                        {% endfor %}
+                    </td>
+                    <td class="col-int">{% if user.isActive == 1 %}Yes{% else %}No{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th class="col-int">Id</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Roles</th>
+                <th class="col-int">Active</th>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
+

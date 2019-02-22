@@ -1,0 +1,17 @@
+{% include 'header.html.twig' %}
+    <div class="container">
+        <h1>Admin zone</h1>
+
+        <a class="admin-menu" href="{{ path('app_admin_users') }}">Users</a>
+        <a class="admin-menu" href="{{ path('app_admin_posts') }}">Posts</a>
+        <a class="admin-menu" href="{{ path('app_admin_comments') }}">Comments</a>
+        <a class="admin-menu" href="{{ path('app_admin_tags') }}">Tags</a>
+        
+        {% block admintitle %}{% endblock %}
+
+        <div class="admin-table">
+            {% block body %}{% endblock %}
+        </div>
+    <div>
+
+{% include 'footer.html.twig' %}
