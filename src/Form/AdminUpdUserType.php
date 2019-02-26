@@ -31,16 +31,15 @@ class AdminUpdUserType extends AbstractType
             ])
             ->add('plainpassword', RepeatedType::class,[
                 'type'=> PasswordType::class,
-                'required'=>'required',
                 'first_options'=>[
                     'attr'=>[
-                        'class'=>'form-passwd form-control',
+                        'class'=>'form-upd-passwd form-control',
                         'placeholder'=>'Password'
                     ]
                 ],
                 'second_options'=>[
                     'attr'=>[
-                        'class'=>'form-passwd form-control',
+                        'class'=>'form-upd-passwd form-control',
                         'placeholder'=>'Repeat password'
                     ]
                 ]

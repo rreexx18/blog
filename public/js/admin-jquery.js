@@ -11,5 +11,5 @@ $(document).ready(function(){
     $(".admin-table").mouseout(function(){
         $(this).find(".actions").hide();
     });
-    
+    $(".form-upd-passwd").removeAttr("required");
 });
