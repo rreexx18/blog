@@ -87,11 +87,12 @@ class AdminController extends AbstractController
         $user = $entityManager->getRepository(User::class)->find($id);
         if( $user->getisActive() == 1 ){
             $user->setisActive(0);
+            $this->addFlash( 'success', 'User unactivated' );
         }else{
             $user->setisActive(1);
+            $this->addFlash( 'success', 'User activated' );
         }
         $entityManager->flush();
-        $this->addFlash( 'success', 'User activated' );
         return $this->redirectToRoute('app_admin_users');
     }
     
